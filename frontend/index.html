@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDAssets | Video Editing Community</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">EDAssets</div>
+        <ul class="nav-links">
+            <li><a href="#" class="nav-link" data-target="home">Home</a></li>
+            <li><a href="#assets" class="nav-link" data-target="assets">Assets</a></li>
+            <li class="auth-hidden"><a href="#upload" class="nav-link" data-target="upload">Upload</a></li>
+            <li class="auth-hidden"><a href="#dashboard" class="nav-link" data-target="dashboard">Dashboard</a></li>
+            <li><a href="http://127.0.0.1:8000/admin" class="nav-link" target="_blank">Admin</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <a href="#login" class="btn btn-secondary nav-link guest-only" data-target="login">Login</a>
+            <a href="#register" class="btn btn-primary nav-link guest-only" data-target="register">Register</a>
+            <button id="logout-btn" class="btn btn-secondary auth-hidden">Logout</button>
+        </div>
+    </nav>
+
+    <main id="app">
+        <!-- Home Section -->
+        <section id="home" class="page active">
+            <div class="hero">
+                <h1>Elevate Your Edits</h1>
+                <p>The community-driven platform for high-quality video editing assets.</p>
+                <div class="hero-btns">
+                    <a href="#assets" class="btn btn-primary nav-link" data-target="assets">Browse Assets</a>
+                    <a href="#register" class="btn btn-secondary nav-link guest-only" data-target="register">Join
+                        Community</a>
+                </div>
+            </div>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Free Downloads</h3>
+                    <p>Access hundreds of transitions, overlays, and effects for free.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Community Driven</h3>
+                    <p>Upload your own creations and share them with the world.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Secure & Fast</h3>
+                    <p>Direct downloads with no wait times.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Register Section -->
+        <section id="register" class="page">
+            <div class="auth-container">
+                <h2>Create Account</h2>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" id="reg-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="reg-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="reg-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">Register</button>
+                    <p class="auth-link">Already have an account? <a href="#login" class="nav-link"
+                            data-target="login">Login</a></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Login Section -->
+        <section id="login" class="page">
+            <div class="auth-container">
+                <h2>Welcome Back</h2>
+                <div id="login-error" class="error-msg" style="display:none; color: red; margin-bottom: 10px;"></div>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" id="login-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">Login</button>
+                    <p class="auth-link">Don't have an account? <a href="#register" class="nav-link"
+                            data-target="register">Register</a></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Upload Section -->
+        <section id="upload" class="page">
+            <div class="container">
+                <h2>Upload Asset</h2>
+                <form id="upload-form">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" id="asset-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="asset-category">
+                            <option value="transition">Transition</option>
+                            <option value="overlay">Overlay</option>
+                            <option value="effect">Effect</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>File</label>
+                        <input type="file" id="asset-file" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload Asset</button>
+                    <div id="upload-msg"></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Assets Section -->
+        <section id="assets" class="page">
+            <div class="container">
+                <h2>Explore Assets</h2>
+                <div class="filters">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="transition">Transitions</button>
+                    <button class="filter-btn" data-category="overlay">Overlays</button>
+                    <button class="filter-btn" data-category="effect">Effects</button>
+                </div>
+                <div id="assets-grid" class="grid">
+                    <!-- Assets will be injected here -->
+                    <p>Loading assets...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="page">
+            <div class="container">
+                <h2>My Dashboard</h2>
+                <div class="dashboard-grid">
+                    <div class="dash-card">
+                        <h3>My Uploads</h3>
+                        <div id="my-uploads-list">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                    <div class="dash-card">
+                        <h3>Download History</h3>
+                        <div id="download-history-list">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 EDAssets. Built for editors.</p>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

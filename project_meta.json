@@ -1,0 +1,31 @@
+{
+  "name": "edassets",
+  "version": "1.0.0",
+  "description": "A community-driven platform for video editors to share assets.",
+  "author": "User",
+  "license": "ISC",
+  "private": true,
+  "scripts": {
+    "start:backend": "cd backend && .\\venv\\Scripts\\python manage.py runserver",
+    "start:frontend": "cd frontend && py -m http.server 8080",
+    "setup:backend": "cd backend && py -m venv venv && .\\venv\\Scripts\\pip install django djangorestframework django-cors-headers pillow"
+  },
+  "dependencies": {
+    "python": [
+      "django",
+      "djangorestframework",
+      "django-cors-headers",
+      "pillow"
+    ],
+    "frontend": [
+      "HTML5",
+      "CSS3",
+      "Vanilla JS",
+      "Google Fonts (Inter)"
+    ]
+  },
+  "directories": {
+    "backend": "d:/Project/EDAssets/backend",
+    "frontend": "d:/Project/EDAssets/frontend"
+  }
+}
